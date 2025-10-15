@@ -1,0 +1,399 @@
+.poiret-one-regular {
+  font-family: "Poiret One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html{
+    margin: 0;
+    /* cursor: none; */
+    cursor: url("../sprites/Cursor.png"), auto;
+}
+
+body{
+    margin: 0 auto;
+    font-family: "Montserrat";
+    color: white;
+    height: 1000vh;
+    cursor: url("../sprites/Cursor.png"), auto;
+}
+
+h1{
+    font-size: 12em;
+    font-family: "Russo One", sans-serif;
+    margin: 0;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+h2{
+    font-size: 10em;
+    font-family: "Russo One", sans-serif;
+    /* margin: 64px; */
+    /* margin-top: 0; */
+    text-transform: uppercase;
+    font-weight: 100;
+    margin: 0;
+}
+
+.welcome-background{
+    z-index: 0;
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 2px #fff;
+    font-size: 20em;
+    font-family: "Russo One", sans-serif;
+    margin: 0;
+    font-weight: 100;
+    text-transform: uppercase;
+    position: absolute;
+    top: 250px;
+    width: 2000px;
+    white-space: nowrap;
+    left: -300px;
+    transform: rotateZ(-10deg);
+    
+    pointer-events: none;
+}
+
+.welcome-background:lang(en){
+    animation: welcome-text-en 80s linear infinite;
+    animation-delay: -40s;
+}
+
+.welcome-background:lang(pl){
+    animation: welcome-text-pl 80s linear infinite;
+    animation-delay: -40s;
+}
+
+.welcome-background2:lang(en){
+    animation-delay: 0s;
+    transform: rotateZ(-10deg) translate(200%, 0);
+}
+
+.welcome-background2:lang(pl){
+    animation-delay: 0s;
+    transform: rotateZ(-10deg) translate(200%, 0);
+}
+
+/* @keyframes welcome-text {
+    0%{
+        transform: rotateZ(-10deg) translate(110%, 0);
+    }
+    100%{
+        transform: rotateZ(-10deg) translate(-170%, 0);
+    }
+} */
+ @keyframes welcome-text-en {
+    0%{
+        transform: rotateZ(-10deg) translate(250%, 0);
+    }
+    100%{
+        transform: rotateZ(-10deg) translate(-445%, 0);
+    }
+}
+
+@keyframes welcome-text-pl {
+    0%{
+        transform: rotateZ(-10deg) translate(260%, 0);
+    }
+    100%{
+        transform: rotateZ(-10deg) translate(-450%, 0);
+    }
+}
+
+.strip h2{
+    margin: 0;
+}
+
+h5{
+    font-family: "Montserrat";
+    max-width: 1000px;
+    font-size: 4em;
+    /* margin: 64px; */
+    margin: 0;
+}
+
+.outline {
+    z-index: 10;
+    /* text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
+                1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff; */
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 1px #fff;
+}
+
+.box{
+    /* background-color: aqua; */
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    /* z-index: ; */
+}
+
+.strip{
+    margin: 0;
+    background-color: #533333;
+    text-align: center;
+}
+
+#welcome{
+    /* background: #a7a0a0; */
+    background: #2b2828;
+    /* background: linear-gradient(52deg,rgba(97, 97, 97, 1) 0%, rgba(145, 103, 99, 1) 78%, rgba(207, 50, 33, 1) 100%); */
+    position: fixed;
+}
+
+#about{
+    background: #1d1919;
+    /* position: absolute; */
+    z-index: 2;
+
+}
+
+#my-photo{
+    position: absolute;
+    right: 0;
+    width: 600px;
+    bottom: 0;
+}
+
+
+
+.bl-corner{
+    position: absolute;
+    bottom: 64px;
+    left: 64px;
+    margin: 0;
+}
+
+#languages{
+    position: absolute;
+    top: 64px;
+    left: 64px;
+    margin: 0;
+}
+
+#languages button{
+    border: none;
+    width: unset;
+    height: unset;
+    margin: 0;
+    backdrop-filter: unset;
+}
+
+#about-photo{
+    width: 400px;
+    position: absolute;
+    top: 20%;
+    right: 128px;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* .video-container {
+    height: 300px;
+    width: 300px;
+    position: relative;
+} */
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.splashart{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Just styling the content of the div, the *magic* in the previous rules */
+.video-container .caption {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: #dc0000;
+  padding: 10px;
+}
+
+button{
+    width: 300px;
+    font-size: 1em;
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    border: 1px solid white;
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    margin-top: 24px;
+    font-family: "Montserrat";
+    transition: 0.1s;
+    margin-right: 12px;
+    /* cursor: none; */
+}
+
+button:hover{
+    /* background-color: rgb(209, 209, 209);
+    color: #1d1919; */
+    background-color: #2b2828;
+    transition: 0.2s;
+    cursor: pointer;
+    /* cursor: url("../sprites/Cursor.png"), auto; */
+}
+
+button:active{
+    background-color: #1d1919;
+    color: white;
+    /* border-color: #1d1919; */
+    transition: 0.1s;
+}
+
+#cursor-circle{
+    width: 150px;
+    height: 150px;
+    border-radius: 200px;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: invert(100%);
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.back-gradient{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #000000;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.selectDisable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.deco-circle {
+    width: 200px;
+    height: 200px;
+    /* border: 2px solid #ff1e00; */
+    border: 2px solid #dc0000;
+    border-radius: 100%;
+    position: fixed;
+    z-index: -100;
+    /* animation: deco-circle 4s ease-in-out 0s infinite; */
+}
+
+@keyframes deco-circle {
+    0%{
+        transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(20%);
+    }
+    0%{
+        transform: translateY(0%);
+    }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #242424;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dc0000;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c90000;
+}
+
+#footer{
+    background-color: #1d1919;
+    overflow: hidden;
+}
+
+a button{
+    width: unset;
+    border-radius: 200px;
+    /* font-size: 1rem; */
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    width: 300px;
+}
+
+#footer #background-logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    
+}
+
+#footer #background-logo path{
+    fill: none;
+    /* stroke: 1px #dc0000 solid; */
+    stroke: #dc0000;
+    z-index: -10;
+    stroke-width: 2px;
+    vector-effect: non-scaling-stroke;
+}
+
+@media (max-width: 1250px) {
+    h1{
+            font-size: 4em;
+    }
+    h2{
+            font-size: 3em;
+    }
+    h5{
+            font-size: 1em;
+    }
+    #my-photo{
+        width: 400px;
+    }
+    .welcome-background{
+        top: 50px;
+        /* transform: rotateZ(90deg); */
+    }
+
+    #about-photo{
+        top: 10%;
+        width: 70%;
+        left: 15%;
+        right: 15%;
+    }
+
+    /* button, a button{
+        width: 80%;
+    } */
+
+    .bl-corner{
+        left: 32px;
+        bottom: 32px;
+    }
+
+    #languages{
+        left: 16px;
+        top: 16px;
+    }
+}

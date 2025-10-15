@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateusz Gąska</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="sprites/MG Logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="box" id="welcome">
+        <div class="welcome-background">GAMES GRAPHIC DESIGN APPS WEBSITES</div>
+        <div class="welcome-background welcome-background2">GAMES GRAPHIC DESIGN APPS WEBSITES</div>
+        <!-- <div class="welcome-background">MATEUSZ GĄSKA</div>
+        <div class="welcome-background welcome-background2">MATEUSZ GĄSKA</div> -->
+        <h1 class="bl-corner main-text">Mateusz Gąska</h1>
+        <h1 class="bl-corner outline main-text">Mateusz Gąska</h1>
+        <div class="deco-circle" style="width: 800px; height: 800px; right: 5%; bottom: -20%; z-index: -100;"></div>
+        <img src="sprites/My Photo.png" alt="" srcset="" id="my-photo">
+
+        <div class="deco-circle" style="width: 1000px; height: 1000px; left: -5%; top: -60%;"></div>
+        <div id="languages">
+            <button id="pl-button" onclick="setLanguage('pl')">PL</button>|<button id="en-button" onclick="setLanguage('en')">EN</button>
+        </div>
+        
+
+    </div>
+    <div class="box" id="about">
+        <span class="bl-corner">
+            <h2 class="about-me">About me</h2>
+            <h5 class="about-content">I'm young and ambitious programmer, who likes making games</h5>
+        </span>
+        <div class="deco-circle" style="width: 900px; height: 900px; left: -10%; bottom: -90%;"></div>
+        <img src="sprites/DSC_0460.png" id="about-photo">
+    </div>
+
+    <!-- <div class="strip">
+        <h2>My projects</h2>
+    </div> -->
+
+    <div class="box video-container" id="quiz-game">
+        <video src="videos/0001-0699.mp4" autoplay muted loop></video>
+        <div class="back-gradient"></div>
+        <span class="bl-corner">
+            <h1>Quiz Game</h1>
+            <h5 class="qg-desc">A learning app</h5>
+            <!-- <button>Check repositorium</button> -->
+            <button class="download-app">Download app</button>
+        </span>
+        
+    </div>
+
+    <div class="box video-container" id="komputerowe-swiaty">
+        <img src="sprites/Komputerowe Światy.png" class="splashart" alt="">
+        <div class="back-gradient"></div>
+        <!-- <video src="videos/2025-10-11 23-49-06.mp4" autoplay muted loop></video> -->
+        <span class="bl-corner">
+            <h1>Komputerowe Światy</h1>
+            <h5 class="ks-desc">Educational game for the InfoSukces 2022-2023 competition</h5>
+            <button class="go-to-repo">Go to repositorium</button>
+        </span>
+    </div>
+
+    <div class="box video-container" id="dungeon-spammer">
+        <img src="sprites/Dungeon Spammer.png" class="splashart" alt="">
+        <div class="back-gradient"></div>
+        <!-- <video src="videos/2025-10-11 23-49-06.mp4" autoplay muted loop></video> -->
+        <span class="bl-corner">
+            <h1>Dungeon Spammer</h1>
+            <h5 class="ds-desc">RPG and clicker game</h5>
+            <button class="go-to-repo">Go to repositorium</button>
+            <button class="play-the-game">Play the game</button>
+        </span>
+    </div>
+
+    <div class="box video-container" id="criptic-clash">
+        <img src="sprites/Cryptic Clash.png" class="splashart" alt="">
+        <div class="back-gradient"></div>
+        <!-- <video src="videos/2025-10-11 23-49-06.mp4" autoplay muted loop></video> -->
+        <span class="bl-corner">
+            <h1>Criptic Clash</h1>
+            <h5 class="cc-desc">1v1 multiplayer dungeon crawler</h5>
+            <button class="go-to-repo">Go to repositorium</button>
+        </span>
+    </div>
+
+    <div class="box video-container" id="saw-miner">
+        <img src="sprites/Saw Miner.png" class="splashart" alt="">
+        <div class="back-gradient"></div>
+        <!-- <video src="videos/2025-10-11 23-49-06.mp4" autoplay muted loop></video> -->
+        <span class="bl-corner">
+            <h1>Saw Miner</h1>
+            <h5 class="sm-desc">A game in which you have to mine as many ores as possible within a given time</h5>
+            <button class="go-to-repo">Go to repositorium</button>
+        </span>
+    </div>
+
+    <div class="box video-container" id="timegeon">
+        <img src="sprites/Timegeon.png" class="splashart" alt="">
+        <div class="back-gradient"></div>
+        <!-- <video src="videos/2025-10-11 23-49-06.mp4" autoplay muted loop></video> -->
+        <span class="bl-corner">
+            <h1>Timegeon</h1>
+            <h5 class="tg-desc">Dungeon crawler game in which you enter a dungeon that depends on the part of the week</h5>
+            <button class="go-to-repo">Go to repositorium</button>
+            <button class="play-the-game">Play the game</button>
+        </span>
+    </div>
+
+    <div class="box video-container" id="skulls-vs-claws">
+        <img src="sprites/Skulls vs Claws.png" class="splashart" alt="">
+        <div class="back-gradient"></div>
+        <!-- <video src="videos/2025-10-11 23-49-06.mp4" autoplay muted loop></video> -->
+        <span class="bl-corner">
+            <h1>Skulls vs Claws</h1>
+            <h5 class="sc-desc">Game where your skeleton army needs to protect your crypt</h5>
+            <button class="go-to-repo">Go to repositorium</button>
+        </span>
+    </div>
+
+    <div class="box" id="footer">
+        <svg height="120%" version="1.1" viewBox="0 0 39.513 19.844" xmlns="http://www.w3.org/2000/svg" id="background-logo">
+            <path transform="translate(-38.963 -115.09)" d="m50.42 115.09-11.457 19.844h4.5103l11.457-19.844zm8.3251 0-11.457 19.844h4.5103l11.457-19.844zm8.2744 0-11.457 19.844h22.913l-6.9887-12.105-2.2913 3.9693 2.4061 4.1672h-9.1653l6.874-11.906z" fill="#fff" stroke-dashoffset="5.2914" stroke-linecap="round" stroke-linejoin="round" stroke-width=".1" style="paint-order:fill markers stroke"/>
+        </svg>
+        <span class="bl-corner">
+            <svg width="39.513mm" height="19.844mm" version="1.1" viewBox="0 0 39.513 19.844" xmlns="http://www.w3.org/2000/svg">
+                <path transform="translate(-38.963 -115.09)" d="m50.42 115.09-11.457 19.844h4.5103l11.457-19.844zm8.3251 0-11.457 19.844h4.5103l11.457-19.844zm8.2744 0-11.457 19.844h22.913l-6.9887-12.105-2.2913 3.9693 2.4061 4.1672h-9.1653l6.874-11.906z" fill="#fff" stroke-dashoffset="5.2914" stroke-linecap="round" stroke-linejoin="round" stroke-width=".1" style="paint-order:fill markers stroke"/>
+            </svg>
+            <h1 class="footer-header">
+                Contact
+            </h1>
+            <h5 class="footer-content">Mateusz Gąska
+            </h5>
+            <a href="mailto:mateuszgaska05@gmail.com"><button>mateuszgaska05@gmail.com</button></a><br>
+            <a href="https://github.com/MateresDev"><button>GitHub →</button></a>
+        </span>
+    </div>
+
+    <div id="cursor-circle" class="selectDisable"></div>
+    <script src="js/main.js"></script>
+</body>
+</html>
