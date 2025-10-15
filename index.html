@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="shortcut icon" href="sprites/MG Logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="sprites/favicon.png" type="image/x-icon">
 </head>
 <body>
     <div class="box" id="welcome">
@@ -23,7 +23,12 @@
 
         <div class="deco-circle" style="width: 1000px; height: 1000px; left: -5%; top: -60%;"></div>
         <div id="languages">
-            <button id="pl-button" onclick="setLanguage('pl')">PL</button>|<button id="en-button" onclick="setLanguage('en')">EN</button>
+            <button id="pl-button" onclick="setLanguage('pl')">
+                PL
+            </button>|
+            <button id="en-button" onclick="setLanguage('en')">
+                EN
+            </button>
         </div>
         
 
@@ -42,13 +47,17 @@
     </div> -->
 
     <div class="box video-container" id="quiz-game">
-        <video src="videos/0001-0699.mp4" autoplay muted loop></video>
+        <img src="sprites/Quiz Game.png" class="splashart" alt="">
+        <!-- <video src="videos/0001-0699.mp4" autoplay muted loop></video> -->
         <div class="back-gradient"></div>
         <span class="bl-corner">
             <h1>Quiz Game</h1>
             <h5 class="qg-desc">A learning app</h5>
             <!-- <button>Check repositorium</button> -->
-            <button class="download-app">Download app</button>
+            <button class="download-app">
+                <div class="button-circle"></div>
+                Download app
+            </button>
         </span>
         
     </div>
@@ -134,12 +143,19 @@
             </h1>
             <h5 class="footer-content">Mateusz Gąska
             </h5>
-            <a href="mailto:mateuszgaska05@gmail.com"><button>mateuszgaska05@gmail.com</button></a><br>
-            <a href="https://github.com/MateresDev"><button>GitHub →</button></a>
+            <a href="mailto:mateuszgaska05@gmail.com"><button><div class="button-circle"></div>mateuszgaska05@gmail.com</button></a><br>
+            <a href="https://github.com/MateresDev"><button><div class="button-circle"></div>GitHub →</button></a>
         </span>
     </div>
 
     <div id="cursor-circle" class="selectDisable"></div>
+
+    <div id="loading">
+        <svg width="39.513mm" height="19.844mm" version="1.1" viewBox="0 0 39.513 19.844" xmlns="http://www.w3.org/2000/svg" id="logo">
+                <path transform="translate(-38.963 -115.09)" d="m50.42 115.09-11.457 19.844h4.5103l11.457-19.844zm8.3251 0-11.457 19.844h4.5103l11.457-19.844zm8.2744 0-11.457 19.844h22.913l-6.9887-12.105-2.2913 3.9693 2.4061 4.1672h-9.1653l6.874-11.906z" fill="#fff" stroke-dashoffset="5.2914" stroke-linecap="round" stroke-linejoin="round" stroke-width=".1" style="paint-order:fill markers stroke"/>
+        </svg>
+    </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>

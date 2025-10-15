@@ -14,7 +14,7 @@ body{
     margin: 0 auto;
     font-family: "Montserrat";
     color: white;
-    height: 1000vh;
+    height: 1250vh;
     cursor: url("../sprites/Cursor.png"), auto;
 }
 
@@ -207,6 +207,10 @@ h5{
 .splashart{
     width: 100%;
     height: 100%;
+    /* left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; */
     position: absolute;
     object-fit: cover;
     z-index: 0;
@@ -235,22 +239,76 @@ button{
     transition: 0.1s;
     margin-right: 12px;
     /* cursor: none; */
+    overflow: hidden;
 }
 
 button:hover{
     /* background-color: rgb(209, 209, 209);
     color: #1d1919; */
-    background-color: #2b2828;
+    /* background-color: #2b2828; */
     transition: 0.2s;
     cursor: pointer;
     /* cursor: url("../sprites/Cursor.png"), auto; */
 }
 
 button:active{
-    background-color: #1d1919;
+    /* background-color: #1d1919; */
     color: white;
     /* border-color: #1d1919; */
     transition: 0.1s;
+}
+
+button .button-circle{
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background-color: #2b2828;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* bottom: 0; */
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    animation: button-unhover 0.2s;
+    /* animation: button-hover 0.2s reverse; */
+    transition: 0.2s;
+}
+
+button:hover .button-circle {
+    animation: button-hover 0.2s forwards;
+}
+
+button:active .button-circle{
+    background-color: #1d1919;
+}
+
+@keyframes button-hover {
+    0%{
+        /* left: 0; */
+        /* right: unset; */
+        width: 0;
+        height: 0;
+    }
+
+    100%{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@keyframes button-unhover {
+    0%{
+        /* left: unset; */
+        /* right: 0; */
+        width: 300px;
+        height: 300px;
+    }
+
+    100%{
+        /* right: 0; */
+        width: 0;
+        height: 0;
+    }
 }
 
 #cursor-circle{
@@ -358,7 +416,88 @@ a button{
     vector-effect: non-scaling-stroke;
 }
 
-@media (max-width: 1250px) {
+#loading{
+    width: 100%;
+    height: 100%;
+    background-color: #1d1919;
+    position: fixed;
+    z-index: 9999999;
+    animation: loading-hide 0.5s ease-out forwards 0.5s;
+}
+
+#loading #logo{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: loading-logo 0.5s ease-in forwards 0.5s;
+}
+
+@keyframes loading-logo {
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    20%{
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+@keyframes loading-hide {
+    0%{
+        bottom: 0;
+    }
+    100%{
+        bottom: 100%;
+    }
+}
+
+@media (max-width: 1300px) {
+    h1{
+        /* 12 */
+        font-size: 8em;
+    }
+    h2{
+        /* 10 */
+        font-size: 6em;
+    }
+    h5{
+        /* 4 */
+        font-size: 2em;
+    }
+    #my-photo{
+        width: 400px;
+    }
+    .welcome-background{
+        top: 50px;
+        /* transform: rotateZ(90deg); */
+    }
+
+    #about-photo{
+        /* top: 10%; */
+        width: 20%;
+        /* left: 15%; */
+        /* right: 15%; */
+    }
+
+    /* button, a button{
+        width: 80%;
+    } */
+
+    .bl-corner{
+        left: 32px;
+        bottom: 32px;
+    }
+
+    #languages{
+        left: 16px;
+        top: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
     h1{
             font-size: 4em;
     }
@@ -395,5 +534,21 @@ a button{
     #languages{
         left: 16px;
         top: 16px;
+    }
+
+    button .button-circle{
+        background-color: white;
+    }
+
+    button:hover{
+        color: #242424;
+    }
+
+    button:active .button-circle{
+        background-color: rgb(236, 236, 236);
+    }
+
+    #languages button{
+        color: unset;
     }
 }
