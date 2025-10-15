@@ -1,12 +1,12 @@
 let circle = document.getElementById("cursor-circle");
-let cx = 0;
-let cy = 0;
-let tx = 0;
-let ty = 0;
-let cw = 100;
-let ch = 100;
-let tw = 100;
-let th = 100;
+let cx = window.innerWidth / 2;
+let cy = window.innerHeight / 2;
+let tx = window.innerWidth / 2;
+let ty = window.innerHeight / 2;
+let cw = 0;
+let ch = 0;
+let tw = 0;
+let th = 0;
 let rz = 0;
 let trz = 0;
 let sx = 0;
@@ -21,6 +21,7 @@ let dcircles = document.getElementsByClassName("deco-circle");
 let mcx = 0;
 let mcy = 0;
 const pageHeightMultiplier = 1.25;
+let page = 0;
 
 function detectMob() {
     return window.innerWidth <= 800;
@@ -81,6 +82,7 @@ const langs = {
     
 // }
 
+dcircles[0].style.opacity = isMobile ? "0" : "1";
 
 if (localStorage.getItem("lang") == null)
     localStorage.setItem("lang", "pl");
@@ -94,36 +96,41 @@ addEventListener("scroll", ()=>{
 });
 
 function refreshPages(){
+
     isMobile = detectMob();
 
     for (let i = 0; i < pages.length; i++) {
         let pos = (window.innerHeight * pageHeightMultiplier) * i - window.pageYOffset;
-        if (pos < 0)
+        if (pos < 0 && pos > -window.innerHeight * pageHeightMultiplier)
             pos = 0;
 
         pages[i].style.top = pos + "px";
         pages[i].style.zIndex = i + 1;
     }
 
-    // for (let i = 0; i < dcircles.length; i++) {
-    //     let w = dcircles[i].getBoundingClientRect();
-    //     let mx = i % 2 == 0 ? -1 : 1;
-    //     let m = -window.pageYOffset / w.width * 200;
-    //     dcircles[i].style.transform = "translate(" + m * mx + "px, " + m + "px)";
-        
-    // }
 
-    myphoto.style.right = -window.pageYOffset / 30 + "px";
-
-    for (let i = 0; i < baxkgroundTexts.length; i++) {
-        baxkgroundTexts[i].style.left = (-window.pageYOffset / 10) + "px";
+    if (isMobile){
+        for (let i = 0; i < dcircles.length; i++) {
+            let w = dcircles[i].getBoundingClientRect();
+            let mx = i % 2 == 0 ? -1 : 1;
+            let m = -window.pageYOffset / w.width * 200;
+            dcircles[i].style.transform = "translate(" + m * mx + "px, " + m + "px)";    
+        }
     }
 
-    for (let i = 0; i < mytexts.length; i++) {
-        mytexts[i].style.left = (-window.pageYOffset / 30 + (isMobile ? 32 : 64)) + "px";
-    }
+    if (page < 1){
+        myphoto.style.right = -window.pageYOffset / 30 + "px";
 
-    aboutPhoto.style.right = ((window.pageYOffset - window.innerHeight) / 15 + 128) + "px";
+        for (let i = 0; i < baxkgroundTexts.length; i++) {
+            baxkgroundTexts[i].style.left = (-window.pageYOffset / 10) + "px";
+        }
+
+        for (let i = 0; i < mytexts.length; i++) {
+            mytexts[i].style.left = (-window.pageYOffset / 30 + (isMobile ? 32 : 64)) + "px";
+        }
+    }
+    if (page < 2)
+        aboutPhoto.style.right = ((window.pageYOffset - window.innerHeight) / 15 + 128) + "px";
     
     // let ym = window.pageYOffset - window.innerHeight * 4;
     // if (ym < 0)
@@ -134,8 +141,6 @@ function refreshPages(){
         let m = (window.innerHeight * pageHeightMultiplier) * (i + 2) - window.pageYOffset + window.innerHeight * (pageHeightMultiplier - 1);
         //let m = (window.pageYOffset - window.innerHeight * (i + 2) * pageHeightMultiplier);
 
-        if (i == 2)
-            console.log(m + splasharts[i].src);
         // let m = 0;
         if (m > 0)
             m = 0;
@@ -169,11 +174,13 @@ if (!isMobile){
 
 if (!isMobile){
     setInterval(() => {
-        cx = lerp(cx, tx, 0.1)
+        page = Math.floor(window.pageYOffset / (window.innerHeight * pageHeightMultiplier));
+
+        cx = lerp(cx, tx, 0.1);
         cy = lerp(cy, ty, 0.1);
 
 
-        mx = lerp(mx, tmx, 0.1)
+        mx = lerp(mx, tmx, 0.1);
         my = lerp(my, tmy, 0.1);
 
 
