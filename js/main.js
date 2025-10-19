@@ -22,6 +22,11 @@ let mcx = 0;
 let mcy = 0;
 const pageHeightMultiplier = 1.25;
 let page = 0;
+let nts = 0;
+let nsf = 0;
+let lpoy = 0;
+let lpmy = 0;
+let nv = false;
 
 function detectMob() {
     return window.innerWidth <= 800;
@@ -36,6 +41,10 @@ let mytexts = document.getElementsByClassName("main-text");
 let aboutPhoto = document.getElementById("about-photo");
 let splasharts = document.getElementsByClassName("splashart");
 let backgrondLogo = document.getElementById("background-logo");
+let navTexts = document.getElementsByClassName("nav-text");
+let navPoints = document.getElementsByClassName("nav-point");
+let navAs = document.getElementsByClassName("nav-a");
+let nav = document.getElementsByTagName("nav")[0];
 
 const langs = {
     "pl": {
@@ -45,16 +54,18 @@ const langs = {
         "about-content": "Jestem młodym programistą z 7 letnim doświadczeniem w Unity Engine",
         "qg-desc": "Moja apka do nauki",
         "download-app": "<div class=\"button-circle\"></div>Pobierz aplikację →",
-        "in-development": "W trakcie tworzenia",
+        "in-development": "<div class=\"button-circle\"></div>W trakcie tworzenia",
         "ds-desc": "RPG gra kliker",
         "go-to-repo": "<div class=\"button-circle\"></div>Repozytorium →",
         "play-the-game": "<div class=\"button-circle\"></div>Zagraj w grę →",
-        "cc-desc": "1v1 wieloosobowy dungeon crawler",
-        "sm-desc": "Gra, w której musisz wykopać jak najwięcej rud w wyznaczonym czasie",
-        "tg-desc": "Dungeon crawler, w którym wchodzisz do lochu, który zależy od danej częsci tygodnia",
-        "sc-desc": "Gra, w której twoja armia szkieletów musi obronić twoją kryptę",
+        "cc-desc": "1v1 dungeon crawler",
+        "sm-desc": "Gra o kopaniu kryształów w proceduralnie generowanych jaskiniach",
+        "tg-desc": "Prosty dungeon crawler",
+        "sc-desc": "Gra o obronie krypty",
         "footer-header": "Kontakt",
-        "ks-desc": "Gra edukacyjna na konkurs InfoSukces 2022-2023"
+        "ks-desc": "Gra edukacyjna na konkurs InfoSukces 2022-2023",
+        "about": "O mnie",
+        "home": "Strona główna"
     },
     "en": {
         "welcome-background": "games graphic design apps websites",
@@ -63,16 +74,18 @@ const langs = {
         "about-content": "I\'m a young programmer with 7 year of experience in Unity Engine",
         "qg-desc": "My learning app",
         "download-app": "<div class=\"button-circle\"></div>Download app →",
-        "in-development": "In development",
+        "in-development": "<div class=\"button-circle\"></div>In development",
         "ds-desc": "RPG clicker game",
         "go-to-repo": "<div class=\"button-circle\"></div>Repository →",
         "play-the-game": "<div class=\"button-circle\"></div>Play the game →",
-        "cc-desc": "1v1 multiplayer dungeon crawler",
-        "sm-desc": "A game in which you have to mine as many ores as possible within a given time",
-        "tg-desc": "Dungeon crawler in which you enter a dungeon that depends on the part of the week",
-        "sc-desc": "Game where your skeleton army must protect your crypt",
+        "cc-desc": "1v1 dungeon crawler",
+        "sm-desc": "Game about mining crystals in procedurally generated caves",
+        "tg-desc": "Simple dungeon crawler",
+        "sc-desc": "Game about defending crypt",
         "footer-header": "Contact",
-        "ks-desc" : "Educational game for the InfoSukces 2022-2023 competition"
+        "ks-desc" : "Educational game for the InfoSukces 2022-2023 competition",
+        "about": "About",
+        "home": "Main page"
     }
 };
 
@@ -99,6 +112,30 @@ function refreshPages(){
 
     isMobile = detectMob();
 
+    if (isMobile){
+        page = Math.floor(window.pageYOffset / (window.innerHeight * pageHeightMultiplier));
+
+        let pageMove = lpoy - window.pageYOffset;
+
+        if (pageMove > 0)
+            lpmy = 1;
+        else if (pageMove < 0)
+            lpmy = -1;
+
+        let nr = nav.getBoundingClientRect();
+        nav.style.marginTop = lpmy == 1 ? "20px" : (-100 - nr.height) +"px";
+
+        for (let i = 0; i < navTexts.length; i++) {
+            if (i == 0)
+                navTexts[i].children[0].children[0].style.fill = page == i ? "#dc0000" : "white";
+            navTexts[i].style.color = page == i ? "#dc0000" : "white";
+        }
+
+        lpoy = window.pageYOffset;
+
+
+    }
+
     for (let i = 0; i < pages.length; i++) {
         let pos = (window.innerHeight * pageHeightMultiplier) * i - window.pageYOffset;
         if (pos < 0 && pos > -window.innerHeight * pageHeightMultiplier)
@@ -109,7 +146,7 @@ function refreshPages(){
     }
 
 
-    if (isMobile){
+    if (isMobile && page < 2){
         for (let i = 0; i < dcircles.length; i++) {
             let w = dcircles[i].getBoundingClientRect();
             let mx = i % 2 == 0 ? -1 : 1;
@@ -170,11 +207,9 @@ if (!isMobile){
         mcx = e.clientX - window.innerWidth / 2;
         mcy = e.clientY - window.innerHeight / 2;
     });
-}
 
-if (!isMobile){
     setInterval(() => {
-        page = Math.floor(window.pageYOffset / (window.innerHeight * pageHeightMultiplier));
+        page = Math.floor(window.pageYOffset / (window.innerHeight * pageHeightMultiplier) + 0.01);
 
         cx = lerp(cx, tx, 0.1);
         cy = lerp(cy, ty, 0.1);
@@ -225,13 +260,79 @@ if (!isMobile){
         let moveMulti = -0.005;
         let cmx = mcx / window.innerWidth * 2 * moveMulti;
         let cmy = mcy / window.innerHeight * 2 * moveMulti;
-        for (let i = 0; i < dcircles.length; i++) {
-            let w = dcircles[i].getBoundingClientRect();
-            let mx = i % 2 == 0 ? -1 : 1;
-            let m = -window.pageYOffset / w.width * 200;
-            dcircles[i].style.transform = "translate(" + (m * mx + cmx * w.width) + "px, " + (m + cmy * w.width) + "px)";
+        if (page < 2){
+            for (let i = 0; i < dcircles.length; i++) {
+                let w = dcircles[i].getBoundingClientRect();
+                let mx = i % 2 == 0 ? -1 : 1;
+                let m = -window.pageYOffset / w.width * 200;
+                dcircles[i].style.transform = "translate(" + (m * mx + cmx * w.width) + "px, " + (m + cmy * w.width) + "px)";
+            }
         }
-        backgrondLogo.style.transform = "translate(" + (cmx * 100 - 50) + "%, " + (cmy * 100 - 50) + "%)";
+        if (page >= 8)
+            backgrondLogo.style.transform = "translate(" + (cmx * 100 - 50) + "%, " + (cmy * 100 - 50) + "%)";
+
+        /*
+        // nts = lerp(nts, (mx < 300 ? 16 : 0), 0.2);
+        // nts = mx < 300 ? 16 : 0;
+        nts = mx < 300 ? 1 : 0;
+        // nts = 1;
+        nsf = lerp(nsf, (mx < 300 ? 1 : 0), 0.1);
+        // nsf = 1;
+        for (let i = 0; i < navTexts.length; i++) {
+            navTexts[i].style.fontSize = nts + "em";
+            navTexts[i].style.color = page == i ? "#dc0000" : "white";
+            navPoints[i].style.backgroundColor = page == i ? "#dc0000" : "white";
+            let rect = navAs[i].getBoundingClientRect();
+            let d = rect.top - my;
+            d /= 100;
+            if (d > 3.14 || d < -3.14)
+                d = 3.14;
+            // console.log();
+            // navAs[i].style.marginLeft = (Math.sin(i / (navTexts.length - 1) * 3.14) * 30) + "px";
+            navAs[i].style.marginLeft = ((Math.cos(d) + 1) / 2 * 30) * nsf + -5 + "px";
+        }*/
+
+        let pageMove = lpoy - window.pageYOffset;
+
+        if (pageMove > 0)
+            lpmy = 1;
+        else if (pageMove < 0)
+            lpmy = -1;
+
+        // nts = lpmy == 1 ? 1 : 0;
+
+        if (!nv && my <= 200 && mx >= 200 && mx <= window.innerWidth - 200)
+            nv = true;
+
+        
+        if (nv && my > 200)
+            nv = false;
+        
+        console.log(nv);
+        let nr = nav.getBoundingClientRect();
+        nav.style.marginTop = lpmy == 1 || nv /*|| my < 200*/ ? "20px" : (-100 - nr.height) +"px";
+
+        for (let i = 0; i < navTexts.length; i++) {
+            // navTexts[i].style.fontSize = nts + "em";
+            if (i == 0)
+                navTexts[i].children[0].children[0].style.fill = page == i ? "#dc0000" : "white";
+            navTexts[i].style.color = page == i ? "#dc0000" : "white";
+            // navTexts[i].parentElement.style.borderColor = page == i ? "#dc0000" : "#00000000";
+            // navTexts[i].style.textDecoration = page == i ? "underline" : "none";
+            // navPoints[i].style.backgroundColor = page == i ? "#dc0000" : "white";
+            let rect = navAs[i].getBoundingClientRect();
+            let d = rect.left + rect.width / 2 - mx;
+            d /= 100;
+            if (d > 3.14 || d < -3.14)
+                d = 3.14;
+            // // console.log();
+            // // navAs[i].style.marginLeft = (Math.sin(i / (navTexts.length - 1) * 3.14) * 30) + "px";
+            // navTexts[i].style.transform = "scale(" ((Math.cos(d) + 1) / 2 * 30) * nsf + -5 + ")";
+            // console.log(((Math.cos(d) + 1) / 2));
+            // navTexts[i].style.transform = "scale(" + ((Math.cos(d) + 1) / 2 * 0.1 + 1) + ")";
+        }
+
+        lpoy = window.pageYOffset;
     }, 8);
 }
 const lerp = (x, y, a) => x * (1 - a) + y * a;
